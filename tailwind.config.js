@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
 	content: ['./App.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
 	theme: {
+		g: ({theme}) => theme('spacing'),
 		extend: {
 			colors: {
 				happy: {
@@ -20,9 +23,12 @@ module.exports = {
 					DEFAULT: 'rgba(67, 112, 242, 1)',
 					50: 'rgba(67, 112, 242, 0.3)',
 				},
-				blue: '#007AFF',
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		plugin(function ({matchUtilities, theme}) {
+			matchUtilities({g: value => ({gap: value})}, {values: theme('g')});
+		}),
+	],
 };
