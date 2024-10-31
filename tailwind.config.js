@@ -20,6 +20,7 @@ module.exports = {
 					DEFAULT: 'rgba(67, 112, 242, 1)',
 					50: 'rgba(67, 112, 242, 0.3)',
 				},
+				blue: '#007AFF',
 			},
 		},
 	},
