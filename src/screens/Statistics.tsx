@@ -18,7 +18,7 @@ const StatisticsScreen = () => {
 
 	const moodData = MoodText.map((name, index) => {
 		const color = name.toLowerCase() as Lowercase<(typeof MoodText)[number]>;
-		const count = mood.filter(e => e === index);
+		const count = mood.filter(e => e.mood === index);
 
 		const {DEFAULT} = configColor[color];
 		const topLabelComponent = () => (

@@ -10,7 +10,7 @@ const HomeScreen = () => {
 	const setMood = useSetRecoilState(atomMood);
 
 	const addMood = (mood: MoodValue) => {
-		setMood(prevMood => [...prevMood, mood]);
+		setMood(prevMood => [...prevMood, {mood, timeStamp: +new Date()}]);
 	};
 
 	return (

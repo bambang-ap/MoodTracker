@@ -2,7 +2,7 @@ import {atom} from 'recoil';
 import {persistObj} from './persistance';
 import {MoodValue} from 'src/constants/enum';
 
-export const atomMood = atom<MoodValue[]>({
+export const atomMood = atom<{mood: MoodValue; timeStamp: number}[]>({
 	...persistObj,
 	key: 'moodState',
 	default: [],
