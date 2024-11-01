@@ -39,7 +39,13 @@ const StatisticsScreen = () => {
 
 	const array = moodData.map(e => e.value);
 	const total = array.reduce((acc, num) => acc + num, 0); // Total = 10
-	const percentages = array.map(num => ((num / total) * 100).toFixed(2));
+	const percentages = array.map(num => {
+		let percent = num / total;
+		if (Number.isNaN(percent)) {
+			percent = 0;
+		}
+		return (percent * 100).toFixed(2);
+	});
 
 	const barWidth =
 		(barChartWidth - 40) / moodData.length -
@@ -78,7 +84,6 @@ const StatisticsScreen = () => {
 			<View className="flex-1 w-full px-4 pt-4">
 				<View className="flex-row flex-wrap">
 					{moodData.map(({name, color, icon}, i) => {
-						console.log(color);
 						return (
 							<View className="p-1 w-1/2">
 								<View
